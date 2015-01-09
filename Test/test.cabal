@@ -1,0 +1,12 @@
+Name:                greetings 
+Version:             0.0 
+Description:         say Hi 
+License:             GPL 
+Author:              Carsten König 
+Maintainer:          Carsten@gettingsharper.de 
+Build-Type:          Simple 
+Cabal-Version:       >=1.2  
+ 
+Executable greetings
+   Main-is:           main.hs
+   Build-Depends:     base >= 3 && < 5 

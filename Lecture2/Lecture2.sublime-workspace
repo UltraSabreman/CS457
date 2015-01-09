@@ -1,0 +1,253 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/User/test.sublime-build",
+	"command_palette":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+			[
+				"packa",
+				"Preferences: Browse Packages"
+			],
+			[
+				"haske",
+				"SublimeHaskell: Insert type"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"haskel run",
+				"SublimeHaskell: Run"
+			],
+			[
+				"haskel",
+				"SublimeHaskell: Run"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"hask",
+				"SublimeHaskell: Show type"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"haskl",
+				"SublimeHaskell: Show type"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 386.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"ghci",
+			"hasktags --ctags --extendedctag .",
+			"rofl s = length s",
+			"2 + 3",
+			":t",
+			"import urllib.request,os,hashlib; h = '2deb499853c4371624f5a07e27c334aa' + 'bf8c4e67d14fb0525ba4f89698a6d7e1'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Andrey/Desktop/Haskle HW/Lecture2"
+	],
+	"file_history":
+	[
+		"/C/Users/Andrey/Desktop/Haskle HW/Homeowork1/test.cabal",
+		"/C/Users/Andrey/Desktop/Haskle HW/Lecture2/main.hs",
+		"/C/Users/Andrey/AppData/Roaming/Sublime Text 3/Packages/User/test.sublime-build",
+		"/C/Users/Andrey/AppData/Roaming/Sublime Text 3/Packages/User/SublimeHaskell.sublime-settings",
+		"/C/Users/Andrey/Desktop/Haskle HW/Lecture2/test.cabal",
+		"/C/Users/Andrey/AppData/Roaming/cabal/config",
+		"/C/Users/Andrey/Desktop/Haskle HW/Lecture2/Lecture2.sublime-project",
+		"/C/Users/Andrey/Desktop/Haskle HW/Test/main.hs",
+		"/C/Users/Andrey/Desktop/Haskle HW/Test/test.cabal",
+		"/C/Users/Andrey/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Andrey/Desktop/test.hs",
+		"/C/Users/Andrey/Desktop/test.bf",
+		"/C/Users/Andrey/Desktop/space bullshit.txt",
+		"/C/Users/Andrey/Desktop/cs491final.txt",
+		"/C/Users/Andrey/Desktop/333exam.txt",
+		"/C/Libraries/Qt/5.3/msvc2013_64/mkspecs/win32-msvc2013/qmake.conf",
+		"/C/Users/Andrey/Desktop/tutors-reqs.txt",
+		"/C/Users/Andrey/Desktop/cs305-week6.txt",
+		"/C/Users/Andrey/Documents/Visual Studio 2013/Projects/Snow/.git/config",
+		"/C/Users/Andrey/Downloads/colorize_nicks.py",
+		"/C/Users/Andrey/Desktop/.weechat/irc.conf",
+		"/C/Users/Andrey/Desktop/cs305-week2.txt",
+		"/C/Users/Andrey/Documents/Kernel.h",
+		"/C/Users/Andrey/Desktop/sec stuff",
+		"/C/Users/Andrey/Desktop/cs305-week4.txt",
+		"/C/Users/Andrey/Desktop/cs305-week3",
+		"/C/Users/Andrey/Desktop/cs305-week3.txt",
+		"/C/Users/Andrey/Desktop/test.html"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.haskell_error_checker":
+	{
+		"height": 102.0
+	},
+	"output.haskell_sublime_load":
+	{
+		"height": 100.0
+	},
+	"project": "Lecture2.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 206.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

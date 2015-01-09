@@ -1,0 +1,71 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_NAME	hasktags
+Lecture2	.\main.hs	/^module Lecture2 where $/;"	m	line:1
+Paths_Test	.\dist\build\autogen\Paths_Test.hs	/^module Paths_Test ($/;"	m	line:2
+Paths_greetings	.\dist\build\autogen\Paths_greetings.hs	/^module Paths_greetings ($/;"	m	line:2
+bindirrel	.\dist\build\autogen\Paths_Test.hs	/^prefix, bindirrel :: FilePath$/;"	ft	line:21
+bindirrel	.\dist\build\autogen\Paths_Test.hs	/^bindirrel     = "bin"$/;"	fi	line:23
+bindirrel	.\dist\build\autogen\Paths_greetings.hs	/^prefix, bindirrel :: FilePath$/;"	ft	line:21
+bindirrel	.\dist\build\autogen\Paths_greetings.hs	/^bindirrel     = "bin"$/;"	fi	line:23
+catchIO	.\dist\build\autogen\Paths_Test.hs	/^catchIO :: IO a -> (Exception.IOException -> IO a) -> IO a$/;"	ft	line:15
+catchIO	.\dist\build\autogen\Paths_Test.hs	/^catchIO = Exception.catch$/;"	fi	line:16
+catchIO	.\dist\build\autogen\Paths_greetings.hs	/^catchIO :: IO a -> (Exception.IOException -> IO a) -> IO a$/;"	ft	line:15
+catchIO	.\dist\build\autogen\Paths_greetings.hs	/^catchIO = Exception.catch$/;"	fi	line:16
+getBinDir	.\dist\build\autogen\Paths_Test.hs	/^getBinDir :: IO FilePath$/;"	ft	line:25
+getBinDir	.\dist\build\autogen\Paths_Test.hs	/^getBinDir = getPrefixDirRel bindirrel$/;"	fi	line:26
+getBinDir	.\dist\build\autogen\Paths_greetings.hs	/^getBinDir :: IO FilePath$/;"	ft	line:25
+getBinDir	.\dist\build\autogen\Paths_greetings.hs	/^getBinDir = getPrefixDirRel bindirrel$/;"	fi	line:26
+getDataDir	.\dist\build\autogen\Paths_Test.hs	/^getDataDir :: IO FilePath$/;"	ft	line:31
+getDataDir	.\dist\build\autogen\Paths_Test.hs	/^getDataDir =  catchIO (getEnv "Test_datadir") (\\_ -> getPrefixDirRel "x86_64-windows-ghc-7.8.3\\\\Test-0.0")$/;"	fi	line:32
+getDataDir	.\dist\build\autogen\Paths_greetings.hs	/^getDataDir :: IO FilePath$/;"	ft	line:31
+getDataDir	.\dist\build\autogen\Paths_greetings.hs	/^getDataDir =  catchIO (getEnv "greetings_datadir") (\\_ -> getPrefixDirRel "x86_64-windows-ghc-7.8.3\\\\greetings-0.0")$/;"	fi	line:32
+getDataFileName	.\dist\build\autogen\Paths_Test.hs	/^getDataFileName :: FilePath -> IO FilePath$/;"	ft	line:40
+getDataFileName	.\dist\build\autogen\Paths_Test.hs	/^getDataFileName name = do$/;"	fi	line:41
+getDataFileName	.\dist\build\autogen\Paths_greetings.hs	/^getDataFileName :: FilePath -> IO FilePath$/;"	ft	line:40
+getDataFileName	.\dist\build\autogen\Paths_greetings.hs	/^getDataFileName name = do$/;"	fi	line:41
+getLibDir	.\dist\build\autogen\Paths_Test.hs	/^getLibDir :: IO FilePath$/;"	ft	line:28
+getLibDir	.\dist\build\autogen\Paths_Test.hs	/^getLibDir = getPrefixDirRel "x86_64-windows-ghc-7.8.3\\\\Test-0.0"$/;"	fi	line:29
+getLibDir	.\dist\build\autogen\Paths_greetings.hs	/^getLibDir :: IO FilePath$/;"	ft	line:28
+getLibDir	.\dist\build\autogen\Paths_greetings.hs	/^getLibDir = getPrefixDirRel "x86_64-windows-ghc-7.8.3\\\\greetings-0.0"$/;"	fi	line:29
+getLibexecDir	.\dist\build\autogen\Paths_Test.hs	/^getLibexecDir :: IO FilePath$/;"	ft	line:34
+getLibexecDir	.\dist\build\autogen\Paths_Test.hs	/^getLibexecDir = getPrefixDirRel "Test-0.0"$/;"	fi	line:35
+getLibexecDir	.\dist\build\autogen\Paths_greetings.hs	/^getLibexecDir :: IO FilePath$/;"	ft	line:34
+getLibexecDir	.\dist\build\autogen\Paths_greetings.hs	/^getLibexecDir = getPrefixDirRel "greetings-0.0"$/;"	fi	line:35
+getPrefixDirRel	.\dist\build\autogen\Paths_Test.hs	/^getPrefixDirRel :: FilePath -> IO FilePath$/;"	ft	line:45
+getPrefixDirRel	.\dist\build\autogen\Paths_Test.hs	/^getPrefixDirRel dirRel = try_size 2048 -- plenty, PATH_MAX is 512 under Win32.$/;"	fi	line:46
+getPrefixDirRel	.\dist\build\autogen\Paths_greetings.hs	/^getPrefixDirRel :: FilePath -> IO FilePath$/;"	ft	line:45
+getPrefixDirRel	.\dist\build\autogen\Paths_greetings.hs	/^getPrefixDirRel dirRel = try_size 2048 -- plenty, PATH_MAX is 512 under Win32.$/;"	fi	line:46
+getSysconfDir	.\dist\build\autogen\Paths_Test.hs	/^getSysconfDir :: IO FilePath$/;"	ft	line:37
+getSysconfDir	.\dist\build\autogen\Paths_Test.hs	/^getSysconfDir = getPrefixDirRel "etc"$/;"	fi	line:38
+getSysconfDir	.\dist\build\autogen\Paths_greetings.hs	/^getSysconfDir :: IO FilePath$/;"	ft	line:37
+getSysconfDir	.\dist\build\autogen\Paths_greetings.hs	/^getSysconfDir = getPrefixDirRel "etc"$/;"	fi	line:38
+isPathSeparator	.\dist\build\autogen\Paths_Test.hs	/^isPathSeparator :: Char -> Bool$/;"	ft	line:92
+isPathSeparator	.\dist\build\autogen\Paths_Test.hs	/^isPathSeparator c = c == '\/' || c == '\\\\'$/;"	fi	line:93
+isPathSeparator	.\dist\build\autogen\Paths_greetings.hs	/^isPathSeparator :: Char -> Bool$/;"	ft	line:92
+isPathSeparator	.\dist\build\autogen\Paths_greetings.hs	/^isPathSeparator c = c == '\/' || c == '\\\\'$/;"	fi	line:93
+joinFileName	.\dist\build\autogen\Paths_Test.hs	/^joinFileName :: String -> String -> FilePath$/;"	ft	line:67
+joinFileName	.\dist\build\autogen\Paths_Test.hs	/^joinFileName ""  fname = fname$/;"	fi	line:68
+joinFileName	.\dist\build\autogen\Paths_greetings.hs	/^joinFileName :: String -> String -> FilePath$/;"	ft	line:67
+joinFileName	.\dist\build\autogen\Paths_greetings.hs	/^joinFileName ""  fname = fname$/;"	fi	line:68
+main	.\main.hs	/^main = print "hello"$/;"	fi	line:5
+minusFileName	.\dist\build\autogen\Paths_Test.hs	/^minusFileName :: FilePath -> String -> FilePath$/;"	ft	line:61
+minusFileName	.\dist\build\autogen\Paths_Test.hs	/^minusFileName dir ""     = dir$/;"	fi	line:62
+minusFileName	.\dist\build\autogen\Paths_greetings.hs	/^minusFileName :: FilePath -> String -> FilePath$/;"	ft	line:61
+minusFileName	.\dist\build\autogen\Paths_greetings.hs	/^minusFileName dir ""     = dir$/;"	fi	line:62
+pathSeparator	.\dist\build\autogen\Paths_Test.hs	/^pathSeparator :: Char$/;"	ft	line:89
+pathSeparator	.\dist\build\autogen\Paths_Test.hs	/^pathSeparator = '\\\\'$/;"	fi	line:90
+pathSeparator	.\dist\build\autogen\Paths_greetings.hs	/^pathSeparator :: Char$/;"	ft	line:89
+pathSeparator	.\dist\build\autogen\Paths_greetings.hs	/^pathSeparator = '\\\\'$/;"	fi	line:90
+prefix	.\dist\build\autogen\Paths_Test.hs	/^prefix, bindirrel :: FilePath$/;"	ft	line:21
+prefix	.\dist\build\autogen\Paths_Test.hs	/^prefix        = "C:\\\\Users\\\\Andrey\\\\AppData\\\\Roaming\\\\cabal"$/;"	fi	line:22
+prefix	.\dist\build\autogen\Paths_greetings.hs	/^prefix, bindirrel :: FilePath$/;"	ft	line:21
+prefix	.\dist\build\autogen\Paths_greetings.hs	/^prefix        = "C:\\\\Users\\\\Andrey\\\\AppData\\\\Roaming\\\\cabal"$/;"	fi	line:22
+splitFileName	.\dist\build\autogen\Paths_Test.hs	/^splitFileName :: FilePath -> (String, String)$/;"	ft	line:75
+splitFileName	.\dist\build\autogen\Paths_Test.hs	/^splitFileName p = (reverse (path2++drive), reverse fname)$/;"	fi	line:76
+splitFileName	.\dist\build\autogen\Paths_greetings.hs	/^splitFileName :: FilePath -> (String, String)$/;"	ft	line:75
+splitFileName	.\dist\build\autogen\Paths_greetings.hs	/^splitFileName p = (reverse (path2++drive), reverse fname)$/;"	fi	line:76
+version	.\dist\build\autogen\Paths_Test.hs	/^version :: Version$/;"	ft	line:19
+version	.\dist\build\autogen\Paths_Test.hs	/^version = Version {versionBranch = [0,0], versionTags = []}$/;"	fi	line:20
+version	.\dist\build\autogen\Paths_greetings.hs	/^version :: Version$/;"	ft	line:19
+version	.\dist\build\autogen\Paths_greetings.hs	/^version = Version {versionBranch = [0,0], versionTags = []}$/;"	fi	line:20
