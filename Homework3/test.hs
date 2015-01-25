@@ -13,5 +13,12 @@ toBinNum n
 
 fromBinNum :: BinNum -> Integer
 fromBinNum []     = 0
-fromBinNum (O:ds) = 1 + fromBinNum ds
-fromBinNum (I:ds) = 2 + fromBinNum ds
+fromBinNum (O:ds) = fromBinNum ds * 2
+fromBinNum (I:ds) = 1 + fromBinNum ds * 2
+
+
+inc :: BinNum -> BinNum
+inc []  = [I]
+inc [O] = [I]
+inc (O:ds) = I : inc ds
+inc (I:ds) = O : inc ds

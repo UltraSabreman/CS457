@@ -47,9 +47,10 @@ toBinNum n  | n == 0 = []
             | odd n  = I : toBinNum halfOfN
             where halfOfN = n `div` 2
 
-    > fromBinNum []     = ...
-    > fromBinNum (O:ds) = ...
-    > fromBinNum (I:ds) = ...
+fromBinNum :: BinNum -> Integer
+fromBinNum []     = 0
+fromBinNum (O:ds) = fromBinNum ds * 2
+fromBinNum (I:ds) = 1 + fromBinNum ds * 2
 
     If you prefer to approach these problems in a different way (for
     example, avoiding recursion), that's fine.
