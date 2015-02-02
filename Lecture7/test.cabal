@@ -1,0 +1,8 @@
+Name:                Lecture5
+Version:             0.0
+Build-Type:          Simple
+Cabal-Version:       >=1.2
+
+Executable Lecture5
+   Main-is:           main.hs
+   Build-Depends:     base >= 3 && < 5, HUnit
