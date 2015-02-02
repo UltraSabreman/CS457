@@ -1,6 +1,7 @@
 module Main where
 
 import PPM6
+import Data.Char
 
 {-
   -- My Code --
@@ -30,7 +31,7 @@ import PPM6
 -- THe main idea is to think of a "picture" on the 2-D plane
 -- to be just a function from coordinate (Double,Double) to Colour
 
-allred x y = red
+{-allred x y = red
 
 go0 = mapDouble "Pics/allred.ppm" allred(-1,-1) (1,1) (100,100)
 
@@ -250,8 +251,10 @@ witch x = 1.0 / (x*x + 1)
 oval :: Point -> Point -> Double -> BitMap
 oval foci1 foci2 radius = undefined
 
-translate :: Point -> BitMap -> BitMap
-translate = undefined
+--translate :: Point -> BitMap -> BitMap
+--translate = undefined
+
+
 
 resize :: Double -> BitMap -> BitMap
 resize scale f = undefined
@@ -266,41 +269,79 @@ main = mapM_ f (zip actions [0..])
         
         
 
-----------------------------------------
+---------------------------------------- -}
 
-trans :: Point -> BitMap -> BitMap
-trans (x,y) f = t
-  where t (n,m) = f(n + x, m + y)
+transPoints :: (Int, Int) -> [(Int, Int)] -> [(Int, Int)] 
+transPoints t [] = []
+transPoints (x,y) ((n,m):xs) = (n + x, m + y) : (transPoints (x,y) xs)
+
+scalePoints :: Int -> [(Int, Int)] -> [(Int, Int)]
+scalePoints d [] = []
+scalePoints d ((x,y):xs) = (x * d, y * d) : (scalePoints d xs)
+
+{--- Plot any function
+plot :: Colour -> (Double -> Double) -> BitMap  
+plot color f (x,y) = if close 0.05 (f x) y then Just color else Nothing
+
+-- Draw circles of radius for each point in a list
+dots:: Double -> Colour -> [Point] -> BitMap
+dots radius color xs (x,y) =
+  if any (near radius (x,y)) xs then Just color else Nothing
+
+putDot :: Colour -> [Point] -> 
+
 
 background :: BitMap
 background (x,y) = if y <= 0
     then Just (Colour 0.3 0.3 1)
-    else Just (Colour 0.7 0.7 1)
+    else Just (Colour 0.7 0.7 1)-}
 
-yReflect :: Point -> Point
+yReflect :: (Int, Int) -> (Int, Int)
 yReflect (x,y) = (x, 0 - y)
 
-refPoints :: [Point] -> [Point]
+refPoints :: [(Int, Int)] -> [(Int, Int)]
 refPoints [] = []
 refPoints (x:xs) = (yReflect x) : refPoints xs
 
 
-letter :: Char -> [Point]
-letter 'a' = [(-200,-200), (0,200), (200, -200)]
+letter :: Char -> [(Int, Int)]
+letter 'a' = [(-2,0), (-2,1), (-2, 2), (-1, 3), (-1, 4), (0, 5), (-1, 1), (-0, 1),
+            (2,0), (2,1), (2, 2), (1, 3), (1, 4), (0, 5), (1, 1), (0, 1)]
+letter 'b' = [(-2,-2)]
 letter c = []
 
 
-drawLetterReflect :: Char -> Point -> [BitMap]
-drawLetterReflect c (x,y) = [
-                      (trans (x, y) (dots 5 white (letter c)))
-                    , (trans (x, -y) (dots 5 white (refPoints (letter c)))) ]
+{-drawLetterReflect :: Char -> Point -> [BitMap]
+drawLetterReflect c (x,y) = [plot white cubic]
+                        
+                       --scale 1 $ dots 1 white $ letter c]
+                      --,(dots 2 white (transPoints (x,-y) $ scalePoints 4 $ refPoints $ letter c)) ]
 
 drawString :: [Char] -> Point -> [BitMap]
 drawString [] p = []
 drawString (n:ns) (x,y) = (drawLetterReflect n (x, y)) ++ (drawString ns (x+20, y))
 
-some = layer ((drawString "a" (-300, 50)) ++ [background])
+some = layer ((drawString "a" (0, 0)) ++ [background])
 
-test = draw "Pics/thihng.ppm" undefined some (-400,-400) (400,400) (400,400)
+test = draw "Pics/thihng.ppm" undefined some (-2,-2) (2,2) (200,200)-}
         
+  --if (x, y) `elem` (letter 'a') then white
+  --else black
+
+letterList :: (Int, Int) -> [Char] -> [(Int, Int)]
+letterList t [] = []
+letterList (x,y) (c:cs) = (transPoints (x,100 - y) $ refPoints $ letter $ toLower c) ++ (transPoints (x,y) $ letter $ toLower c) ++ (letterList (x + 6, y) cs)
+
+pixelPicker :: [Char] -> Int -> Int -> Colour
+pixelPicker c x y 
+          | (y,x) `elem` (letterList (5, 100 - 45) c) && x > 50 =  Colour 0.7 1 0.7
+          | (y,x) `elem` (letterList (5, 100 - 45) c) =  green
+
+          | x > 50 = Colour 0.3 0.3 1
+          | x <= 50 = Colour 0.7 0.7 1
+          
+
+
+
+go = mapPixel "tim.ppm" (pixelPicker "aab") 100 100
  
