@@ -1,0 +1,8 @@
+Name:                Homeowrk4
+Version:             0.0
+Build-Type:          Simple
+Cabal-Version:       >=1.2
+
+Executable Hw4
+   Main-is:           main.hs
+   Build-Depends:     base >= 3 && < 5, HUnit, parsec, , quickcheck
