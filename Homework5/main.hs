@@ -36,7 +36,7 @@ Prove 3 things:
 	map f (z:zs) ++ map f y = (f z) : (map f zs) ++ map f y		--> (by 3)
 	(f z) : (map f zs) ++ map f y = 
 
-	--I'm really not sure where to go from here....
+	--I really not sure where to go from here....
 
 3) E(bottom)	map f bottom ++ map f y = map f (bottom ++ y)
 
@@ -67,6 +67,8 @@ Prove 3 things:
 3)	(bottom ++ ys) ++ zs
 	bottom ++ (ys ++ zs)	--> (by pattern matching?)
 
+
+--Once again, im not sure if this proof is correct (I dbout it is)....
 -}
 
 -- ======================
