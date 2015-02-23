@@ -137,7 +137,7 @@ in cases like this?
 module Homework5 where
 
 import Test.HUnit
-import Test.QuickCheck
+--import Test.QuickCheck
 
 {-1) Define instances of Finite for the Int type (whose minimum and
 maximum values can be obtained as (minBound::Int) and (maxBound::Int),
@@ -149,10 +149,31 @@ the prelude as:
 -}
 
 class Finite a where
-  elems :: [a]
+  elements :: [a]
+  size :: a -> Int
 
 instance Finite Bool where
-  elems = [ False, True ] 
+  elements = [True, False]
+  size x = 2
 
 instance Finite Int where
-	elems = [a | a <- [minBound::Int ..maxBound::Int]]
+  elements = [minBound::Int ..maxBound::Int]
+  size x = x --maxBound::Int + (0 - minBound::Int)
+
+instance (Finite a, Finite b) => Finite (a, b) where
+  elements = [ (x,y) | x <- elements, y <- elements]
+  size (x, y) = (size x) * (size y)
+
+instance (Finite a, Finite b) => Finite (Either a b) where
+  elements = elements
+  size (Left x) = size x
+  size (Right x) = size x
+
+instance (Finite a, Show a, Show b) => Show (a -> b) where
+  show f = "test"
+
+--instance (Finite a, Eq b) => Eq (a -> b) where
+--  f == g  =  ...
+
+someF :: elements  -> Bool
+someF f = True
