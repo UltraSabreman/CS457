@@ -137,43 +137,83 @@ in cases like this?
 module Homework5 where
 
 import Test.HUnit
---import Test.QuickCheck
+import Test.QuickCheck
 
-{-1) Define instances of Finite for the Int type (whose minimum and
+{-
+1) Define instances of Finite for the Int type (whose minimum and
 maximum values can be obtained as (minBound::Int) and (maxBound::Int),
 respectively), the product type (a, b) (assuming, of course that both
 a and b are finite), and the sum type Either a b, which is defined in
 the prelude as:
 
    data Either a b = Left a | Right b
+Explain how your definitions work and use QuickCheck to verify that
+your definitions satisfy the proposed law, at least on the basis of
+some random tests.  [Note that a finite type can still have many
+elements; you might want to think carefully about how you write your
+instance definitions, especially the one for Int, to ensure that
+testing does not take too long!]
 -}
 
 class Finite a where
-  elements :: [a]
-  size :: a -> Int
+  elems :: [a]
+  --size :: a -> Int
 
 instance Finite Bool where
-  elements = [True, False]
-  size x = 2
+  elems = [True, False]
+  --size x = 2
+--Simply returns a list with Ture and false.
 
 instance Finite Int where
-  elements = [minBound::Int ..maxBound::Int]
-  size x = x --maxBound::Int + (0 - minBound::Int)
+  elems = [y | x <- [0..maxBound::Int], y <- [x,-x]]
+  --size x = x
+--returns all ints. It's actulay kinda cool how this works,
+--as it builds the list out from 0.
 
 instance (Finite a, Finite b) => Finite (a, b) where
-  elements = [ (x,y) | x <- elements, y <- elements]
-  size (x, y) = (size x) * (size y)
+  elems = [ (x,y) | x <- elems, y <- elems]
+  --size (x, y) = (size x) * (size y)
+--All possible sets of the two elems sets crossed together
 
 instance (Finite a, Finite b) => Finite (Either a b) where
-  elements = elements
-  size (Left x) = size x
-  size (Right x) = size x
+  elems = [Left x | x <- elems] ++ [Right x | x <-elems]
+  --size (Left x) = size x
+  --size (Right x) = size x
+--A list of both lists combined.
 
-instance (Finite a, Show a, Show b) => Show (a -> b) where
-  show f = "test"
 
---instance (Finite a, Eq b) => Eq (a -> b) where
---  f == g  =  ...
+prop_testInt :: Int -> Bool
+prop_testInt x = elem x elems
 
-someF :: elements  -> Bool
-someF f = True
+prop_TestPow :: (Bool, Bool) -> Bool
+prop_TestPow x = elem x elems
+
+--prop_TestAdd :: (Either a b) -> Bool
+--prop_TestAdd (Left x) = elem x elems
+--Not sure how to build a test for this.....
+{-
+2)If a is a Finite type, then we can use elements :: [a] to obtain
+the list of all values in the domain of a function of type a -> b.
+Use this observation to define the following instances for displaying
+functions (you may use whatever notation you prefer) and for testing
+functions for equality:
+
+  instance (Finite a, Show a, Show b) => Show (a -> b) where
+    show f = ...
+
+  instance (Finite a, Eq b) => Eq (a -> b) where
+    f == g  =  ...
+
+You may, of course, define any auxiliary functions that you need to
+make these definitions work as you would expect.
+-}
+
+someTest :: Int -> Bool
+someTest 0 = False
+someTest _ = True
+
+testSome :: (Int -> Bool) -> Bool
+testSome (i, b) = True
+
+--instance (Finite a, Show a, Show b) => Show (a -> b) where
+--	show (x -> y) = undefined --show $ id f --show f ++ " -> "  ++ show b
