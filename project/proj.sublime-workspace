@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"com",
+				"computeField"
+			],
+			[
 				"do",
 				"doTiming"
 			],
@@ -135,16 +139,8 @@
 			"file": "main.hs",
 			"settings":
 			{
-				"buffer_size": 94,
+				"buffer_size": 1260,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/Andrey/AppData/Roaming/Sublime Text 3/Packages/SublimeHaskell/ModuleInspector.hs",
-			"settings":
-			{
-				"buffer_size": 10706,
-				"line_ending": "Unix"
 			}
 		}
 	],
@@ -328,6 +324,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"y",
 			"self.",
 			"Quick.",
 			"points",
@@ -346,11 +343,12 @@
 			"t"
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"x",
 			"self:",
 			"self.points",
 			"excludedCheckLines",
@@ -368,7 +366,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -396,7 +394,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -405,55 +403,25 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 94,
+						"buffer_size": 1260,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								94,
-								94
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SublimeHaskell/Syntaxes/Haskell-SublimeHaskell.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/C/Users/Andrey/AppData/Roaming/Sublime Text 3/Packages/SublimeHaskell/ModuleInspector.hs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10706,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4947,
-								4947
+								485,
+								485
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/SublimeHaskell/Syntaxes/Haskell-SublimeHaskell.tmLanguage",
 							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1826.0,
+						"translation.y": 180.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -512,7 +480,7 @@
 	"project": "proj.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
