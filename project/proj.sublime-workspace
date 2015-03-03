@@ -1,0 +1,555 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"do",
+				"doTiming"
+			],
+			[
+				"c",
+				"canvas"
+			],
+			[
+				"dr",
+				"draw"
+			],
+			[
+				"setC",
+				"setCanvas"
+			],
+			[
+				"tri",
+				"triLines"
+			],
+			[
+				"cur",
+				"curLine"
+			],
+			[
+				"po",
+				"pointList"
+			],
+			[
+				"vec",
+				"vec2"
+			],
+			[
+				"test",
+				"test3"
+			],
+			[
+				"ve",
+				"vec2"
+			],
+			[
+				"fun",
+				"function	function"
+			],
+			[
+				"visitedP",
+				"visitedPoints"
+			],
+			[
+				"vis",
+				"visitedPoints"
+			],
+			[
+				"d",
+				"draw"
+			],
+			[
+				"co",
+				"coroutine"
+			],
+			[
+				"go",
+				"goodRight"
+			],
+			[
+				"get",
+				"getNewPoints"
+			],
+			[
+				"p",
+				"point"
+			],
+			[
+				"point",
+				"pointList"
+			],
+			[
+				"temp",
+				"tempArrow"
+			],
+			[
+				"la",
+				"largestIndex"
+			],
+			[
+				"L",
+				"largestIndex"
+			],
+			[
+				"largest",
+				"largestIndex"
+			],
+			[
+				"lar",
+				"largestMobile"
+			],
+			[
+				"te",
+				"tempArrow"
+			],
+			[
+				"roman",
+				"romanDict"
+			],
+			[
+				"for",
+				"formatString"
+			],
+			[
+				"arg",
+				"argparse"
+			],
+			[
+				"spe",
+				"seperatorGroup"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "gol.cabal",
+			"settings":
+			{
+				"buffer_size": 212,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "main.hs",
+			"settings":
+			{
+				"buffer_size": 94,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Andrey/AppData/Roaming/Sublime Text 3/Packages/SublimeHaskell/ModuleInspector.hs",
+			"settings":
+			{
+				"buffer_size": 10706,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"haskell",
+				"SublimeHaskell: Insert type"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Andrey/Desktop/cs457/project"
+	],
+	"file_history":
+	[
+		"/C/Users/Andrey/AppData/Roaming/Sublime Text 3/Packages/SublimeHaskell/ModuleInspector.hs",
+		"/C/Users/Andrey/Desktop/New Text Document.txt",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 350/project/cs350 project/src/vector.lua",
+		"/C/Users/Andrey/Desktop/tm_routes.kml.xml",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 350/project/cs350 project/src/BruteForce.lua",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 350/project/cs350 project/src/main.lua",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 350/project/cs350 project/src/QuickHull.lua",
+		"/C/Fast Games/SteamApps/common/GarrysMod/garrysmod/data/expression2/missile_launcher_propcore.txt",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 350/project/cs350 project/project.sublime-project",
+		"/C/Users/Andrey/AppData/Roaming/Sublime Text 3/Packages/User/project.sublime-build",
+		"/C/Users/Andrey/Desktop/cs350project/src/main.lua",
+		"/C/Users/Andrey/AppData/Roaming/Sublime Text 3/Packages/Theme - DefaultPlus/DefaultPlus.sublime-theme",
+		"/C/Users/Andrey/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Andrey/Desktop/project.sublime-build",
+		"/C/Fast Games/SteamApps/common/GarrysMod/garrysmod/lua/Saber-Tech/Hud/Main_Hud.lua",
+		"/C/Fast Games/SteamApps/common/GarrysMod/garrysmod/lua/autorun/client/hud.lua",
+		"/C/Fast Games/SteamApps/common/GarrysMod/garrysmod/lua/Saber-Tech/Hacks/Bot.lua",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 350/HW4/hw4",
+		"/C/Fast Games/SteamApps/common/GarrysMod/garrysmod/lua/Saber-Tech/new.lua",
+		"/C/Fast Games/SteamApps/common/GarrysMod/garrysmod/lua/Saber-Tech/Render.Lua",
+		"/C/Fast Games/SteamApps/common/GarrysMod/garrysmod/lua/Saber-Tech/Random lua shit.txt",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW4/mjParser.jj",
+		"/C/Users/Andrey/Google Drive/New Text Document.txt",
+		"/C/Users/Andrey/Desktop/mjParser.jj",
+		"/C/Users/Andrey/Desktop/Homework/lab6/testif",
+		"/C/Users/Andrey/Desktop/Homework/lab6/If.jj",
+		"/C/Users/Andrey/Desktop/Homework/lab6/sol/SumAst.java",
+		"/C/Users/Andrey/Desktop/Homework/hw4/mjParser0.jj",
+		"/C/Users/Andrey/Desktop/Homework/lab6/sol/Expr4.jj",
+		"/C/Users/Andrey/Desktop/Homework/lab6/Expr3.jj",
+		"/C/Users/Andrey/Desktop/Homework/lab6/Expr2.jj",
+		"/C/Users/Andrey/Desktop/Homework/lab6/Expr1.jj",
+		"/C/Users/Andrey/Desktop/Homework/lab6/ast/Ast.java",
+		"/C/Users/Andrey/Desktop/Homework/lab6/SumAst.java.ref",
+		"/C/Users/Andrey/Desktop/Homework/lab6/Sum.java",
+		"/C/Users/Andrey/Desktop/Homework/lab6/HelloAst.java",
+		"/C/Users/Andrey/Desktop/Homework/lab6/Hello.ast.ref",
+		"/C/Users/Andrey/Desktop/Homework/lab6/Hello.java",
+		"/C/Users/Andrey/Desktop/Homework/lab4/test1",
+		"/C/Users/Andrey/Desktop/Homework/lab4sol/Expr.jj",
+		"/C/Users/Andrey/Desktop/Homework/lab5/input",
+		"/C/Users/Andrey/Desktop/Homework/lab7/00/Example.java",
+		"/C/Users/Andrey/Desktop/Homework/lab5sol/Topdown.java",
+		"/C/Users/Andrey/Desktop/Homework/lab5/Topdown.java",
+		"/C/Users/Andrey/Desktop/Homework/lab5sol/lab5keys.pdf",
+		"/C/Users/Andrey/Desktop/Homework/lab5sol/input",
+		"/C/Users/Andrey/Desktop/Homework/lab5/lab5handout.pdf",
+		"/C/Users/Andrey/Google Drive/Games to get.txt",
+		"/C/Users/Andrey/Desktop/New Text Document (2).txt",
+		"/C/Users/Andrey/Desktop/New Text Document (3).txt",
+		"/C/Fast Games/FTB/Monster/minecraft/config/powercrystals/netherores/common.cfg",
+		"/C/Users/Andrey/Desktop/demo/src/com/ekito/simplekmldemo/SimpleKMLDemoActivity.java",
+		"/C/Users/Andrey/Desktop/Serializer.java",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 350/HW3/q1.txt",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW3/mjGrammarLL.jj",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW3/mjGrammarRaw.jj",
+		"/C/Users/Andrey/AppData/Roaming/SumatraPDF/SumatraPDF-settings.txt",
+		"/C/Users/Andrey/Desktop/cs35-hw3-q1.txt",
+		"/C/Users/Andrey/Desktop/cs350-hw3-q2.txt",
+		"/C/Users/Andrey/Desktop/cs350-hw3-q5.py",
+		"/C/Users/Andrey/Desktop/cs35-hw3-q1",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW3/andrey-Byelogurov_hw3.txt",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW3/tst/test02.java",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW3/mjGrammarRaw.txt",
+		"/C/Users/Andrey/.android/avd/Nexus4.avd/config.ini",
+		"/C/Users/Andrey/.android/avd/nbnmb.avd/config.ini",
+		"/C/Users/Andrey/Desktop/psu essay.txt",
+		"/C/Users/Andrey/.AndroidStudioPreview/system/log/idea.log",
+		"/C/Users/Andrey/AndroidStudioProjects/TriTracker/AndroidManifest.xml",
+		"/C/Users/Andrey/Desktop/Games/Monster/server.properties",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW2/Andrey-Byelogurov_HW2.txt",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW2/hw2-lexer.txt",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW2/lexertour/08/Example.jflex",
+		"/C/Users/Andrey/Desktop/lol.html",
+		"/C/Fast Games/FTB/Monster/minecraft/mods/VoxelMods/voxelMap/localhost.points",
+		"/C/Fast Games/FTB/Monster/minecraft/mods/VoxelMods/voxelMap/Something.points",
+		"/C/Users/Andrey/Google Drive/Games/FTB/VoxelMods/voxelMap/localhost.points",
+		"/C/Users/Andrey/Google Drive/Games/FTB/VoxelMods/voxelMap/Something~Monster.points",
+		"/C/Fast Games/FTB/Monster/minecraft/ForgeModLoader-client-0.log",
+		"/C/Users/Andrey/Desktop/Monster/server.properties",
+		"/C/Users/Andrey/Google Drive/Games/FTB/VoxelMods/voxelMap/localhost~colon~1337.points",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW1/Andrey_Byelogurov-hw1.txt",
+		"/C/Users/Andrey/Desktop/html.jflex",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW2/lexertour/10/MiniColor.jflex",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW2/lexertour/07/Example.jflex",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW2/lexertour/09/Example.jflex",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW2/lexertour/11/mini/Mini.jflex",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW2/lexertour/05/Example.jflex",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW2/lexertour/06/Example.jflex",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW2/lexertour/02/Example.jflex",
+		"/C/Users/Andrey/Desktop/ast.dot",
+		"/C/Users/Andrey/Google Drive/2014 - Winter/CS 321/HW2/lexertour/regexp/RegExp.java",
+		"/C/Users/Andrey/Documents/Visual Studio 2013/Projects/lolbot/lolbot/lolbot.py",
+		"/C/Users/Andrey/Desktop/lol.py",
+		"/C/Users/Andrey/Desktop/color_console.py",
+		"/C/x64/ansi.rc",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/menu/buss_alert_context_menu.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/menu/alert_list_action_bar.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/menu/stop_details_action_bar.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/menu/stop_list_context_menu.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/menu/settings_action_bar.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/menu/map_action_bar.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/layout/fav_stop_layout.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/AndroidManifest.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/layout/main_layout.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/layout/hist_stop_layout.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/layout/map_layout.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/layout/marker_info_window_layout.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/layout/set_reminder.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/layout/settings_layout.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/layout/alert_layout.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/layout/spinner_popup_layout.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/layout/stop_details_layout.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/layout/stop_list_layout.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/layout/buss_layout.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/layout/alert_list_layout.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/menu/buss_context_menu.xml",
+		"/C/Users/Andrey/Google Drive/Projects/Workspace/tritracker/res/menu/main_action_bar.xml",
+		"/C/Users/Andrey/Desktop/ghj.dat",
+		"/C/Users/Andrey/Desktop/Android SDK/sdk/add-ons/addon-google_apis-google-14/samples/MapsDemo/src/com/example/android/apis/view/MapViewCompassDemo.java",
+		"/C/Users/Andrey/Documents/Code/google-play-services_lib/src/android/UnusedStub.java",
+		"/C/Users/Andrey/Desktop/Android SDK/sdk/add-ons/addon-google_apis-google-14/samples/MapsDemo/src/com/example/android/apis/view/MapViewDemo.java",
+		"/C/Users/Andrey/Desktop/proof.py",
+		"/C/Users/Andrey/Desktop/Android SDK/sdk/add-ons/addon-google_apis-google-14/samples/MapsDemo/src/com/example/android/apis/MapsDemo.java",
+		"/C/Users/Andrey/Desktop/treefartm stuff",
+		"/C/Users/Andrey/Desktop/cs321hw1/hw1-warmup.txt",
+		"/C/Users/Andrey/Desktop/jghj.py"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"self.",
+			"Quick.",
+			"points",
+			"end",
+			"triLines",
+			"curLine",
+			"vector",
+			"%\\\\",
+			"ValidEntity",
+			"Zans",
+			"placem",
+			" ",
+			"dyna",
+			"door",
+			"'",
+			"t"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"self:",
+			"self.points",
+			"excludedCheckLines",
+			"startSplit",
+			"IsValid",
+			".",
+			"\""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "gol.cabal",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 212,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								203,
+								203
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SublimeHaskell/Syntaxes/Cabal.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "main.hs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 94,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								94,
+								94
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SublimeHaskell/Syntaxes/Haskell-SublimeHaskell.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/Andrey/AppData/Roaming/Sublime Text 3/Packages/SublimeHaskell/ModuleInspector.hs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10706,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4947,
+								4947
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SublimeHaskell/Syntaxes/Haskell-SublimeHaskell.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1826.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"output.exec":
+	{
+		"height": 159.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.haskell_error_checker":
+	{
+		"height": 100.0
+	},
+	"output.haskell_sublime_load":
+	{
+		"height": 100.0
+	},
+	"project": "proj.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 123.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
