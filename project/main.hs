@@ -99,6 +99,8 @@ runGame x field = do {
 			where newField = computeField field
 
 
+--Add color for output
+--NEEED TESTS FOR GOOD GRADE!!!!!
 main = do {
 	setSGR [SetColor Foreground Vivid Red];
     putStr "Hello\n";
