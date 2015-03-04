@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"field",
+				"fieldSize"
+			],
+			[
 				"com",
 				"computeField"
 			],
@@ -131,7 +135,7 @@
 			"file": "gol.cabal",
 			"settings":
 			{
-				"buffer_size": 212,
+				"buffer_size": 227,
 				"line_ending": "Windows"
 			}
 		},
@@ -139,8 +143,17 @@
 			"file": "main.hs",
 			"settings":
 			{
-				"buffer_size": 1260,
+				"buffer_size": 2515,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "module MonadInterpWorksheetDiscussion where\n\ndata Store s x = St(s -> (x,s))\n\neval:: Store a b -> a -> (b,a)\neval (St f) init = f init\n\nreadS v = St f\n  where f dict = (find v dict,dict)\nwriteS v x =  St  g\n  where g dict = (lookup v dict,update v x dict)\n\nret x = St f\n  where f dict = (x,dict)\n\nincrement = St f\n where f initial = (initial, initial + 1)\n\ntestAndSet new = St f\n   where f i = (i==0,new)\nprog1 = do { increment\n           ; y <- testAndSet 7\n           ; return y\n           }\n           \ntype Map = [(String,Value)]\n\n-- Assumption that the list is a set \n-- Order doesn't matter, and no duplicates\n\n--------------------------------------\n-- Find a value in the Map\n\nfind :: Eq a => a -> [(a,b)] -> b\nfind nm pairs = head [ v | (n,v) <- pairs, n==nm]\n\n-- Update a value in a Map\n\nupdate :: Eq a => a -> b -> [(a,b)] -> [(a,b)]\nupdate nm value pairs = (nm,value) : [ (n,v) | (n,v) <- pairs, n /= nm ]\n\n-----------------------------------------------\n-- Here is a new language with variables and assignments\n\ndata T5 = Add5 T5 T5\n        | Sub5 T5 T5\n        | Mult5 T5 T5\n        | Int5 Int\n        | Var5 String\n        | Assign5 String  T5\n\n\n-- Write an evaluator for the language T5\n-- write it in functional style (that is don't use monads)\n-- I started it for you.\n\ntype Value = Int\n\neval5a :: T5 -> Store Map Value\neval5a (Add5 x y) =\n  St(\\s-> let St f = eval5a x\n              St g = eval5a y\n              (x',s1) = f s\n              (y',s2) = g s1\n          in(x'+y',s2))\neval5a (Sub5 x y) = undefined\neval5a (Mult5 x y) = undefined\neval5a (Int5 n) = undefined\neval5a (Var5 s) = undefined\neval5a (Assign5 nm x) = undefined\n\n-----------------------------------------------\n-- Now write the operators on the Store monad\n\n\n-- Given a name \"x\", \"getStore x\" returns a \n-- Store computation, that when run returns \n-- the value associated in the Map \n-- with the name given as input. \n\ngetStore :: String -> (Store Map Value)\ngetStore nm = St h\n  where h s = undefined\n\n-- Given a name \"x\", and a new value \"v\" \n-- \"putStore x v\" returns a Store computation, \n-- that when it runs returns unit, but updates\n-- the map so \"x\" is now mapped to \"v\"\n\nputStore :: String -> Value -> (Store Map ())\nputStore nm n = undefined\n  \n-------------------------------------------------------\n-- Write an evaluator for the language T5 but\n-- this time use use monads and the \"do\" syntax\n-- Hint. use the operators on the Store Monad\n-- I started it for you.\n          \neval5 :: T5 -> Store Map Value\neval5 (Add5 x y) = \n      do {x' <- eval5 x; y' <- eval5 y; return (x' + y')}\neval5 (Sub5 x y) = do {x' <- eval5 x; y' <- eval5 y; return (x' - y')}\neval5 (Mult5 x y) = do {x' <- eval5 x; y' <- eval5 y; return (x' * y')}\neval5 (Int5 n) = ret n\neval5 (Var5 s) = readS s\neval5 (Assign5 s x) = do { x' <- eval5 x; writeS s x'; return x'}\n\np1 = Sub5 (Add5 (Assign5 \"x\" (Int5 12)) (Int5 3)) (Var5 \"x\")\np2 = Add5 (Var5 \"x\") p1 \n------------------------------\ninstance Monad (Store s) where\n  return x = St(\\ s -> (x,s))\n  (>>=) (St f) g = St h\n    where h s1 = g' s2 where (x,s2) = f s1\n                             St g' = g x\n                 ",
+			"settings":
+			{
+				"buffer_size": 3145,
+				"line_ending": "Windows",
+				"name": "module MonadInterpWorksheetDiscussion where"
 			}
 		}
 	],
@@ -343,7 +356,7 @@
 			"t"
 		],
 		"highlight": true,
-		"in_selection": true,
+		"in_selection": false,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
@@ -366,7 +379,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -375,15 +388,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 212,
+						"buffer_size": 227,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								203,
-								203
+								226,
+								226
 							]
 						],
 						"settings":
@@ -394,7 +407,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -403,15 +416,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1260,
+						"buffer_size": 2515,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								485,
-								485
+								2511,
+								2511
 							]
 						],
 						"settings":
@@ -421,7 +434,37 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 180.0,
+						"translation.y": 1080.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3145,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3145,
+								3047
+							]
+						],
+						"settings":
+						{
+							"auto_name": "module MonadInterpWorksheetDiscussion where",
+							"syntax": "Packages/Haskell/Haskell.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1260.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

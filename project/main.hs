@@ -3,17 +3,24 @@
 
 module Homework5 where
 
+import Control.Concurrent
+import System.Console.ANSI
 
 fieldSize :: (Int, Int)
-fieldSize = (5, 5)
+fieldSize = (10, 10)
 
 testField :: [[Int]]
 testField = [
-				[0,0,0,0,0],
-				[0,0,1,0,0],
-				[0,0,1,0,0],
-				[0,0,1,0,0],
-				[0,0,0,0,0]
+				[0,0,0,0,0,0,0,0,0,0],
+				[0,0,1,0,0,0,0,0,0,0],
+				[0,0,0,1,0,0,0,0,0,0],
+				[0,1,1,1,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0]
 			]
 
 
@@ -71,10 +78,30 @@ printField :: [[Int]] -> String
 printField [] = ""
 printField (x:xs) = (px x) ++ "\n" ++ printField xs
 	where 
-		px (l:ls) = (show l) ++ " " ++ px ls
+		px (l:ls)
+			| l == 1 = "O " ++ px ls
+			| otherwise = ". " ++ px ls
 		px [] = ""
 
-runGame :: Int -> [[Int]] -> [[Int]]
-runGame 0 field = field
-runGame x field = runGame (x - 1) $ computeField field;
+runGame :: Int -> [[Int]] -> IO ()
+runGame 0 field = do {
+				clearScreen;
+				setCursorPosition 0 0;
+				putStr $ printField field ++ "\n";
+			}
+runGame x field = do {
+				clearScreen;
+				setCursorPosition 0 0;
+				putStr $ printField newField ++ "\n";	
+				threadDelay 250000;
+				runGame (x - 1) newField ;
+			}
+			where newField = computeField field
+
+
+main = do {
+	setSGR [SetColor Foreground Vivid Red];
+    putStr "Hello\n";
+	setSGR [Reset];
+}
 		
