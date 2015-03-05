@@ -80,6 +80,51 @@ isCellAlive (x, y) field =
 computeField :: [[Int]] -> [[Int]]
 computeField field = [[isCellAlive (j, k) field | j <- [0..(fst $ fieldSize field)]] | k <- [0..(snd $ fieldSize field)]]
 
+
+printNullField :: [[Int]] -> IO ()
+printNullField field = do {
+    setSGR [SetColor Foreground Vivid Red];
+    printNullTable $ snd $ fieldSize field;
+    setSGR [Reset];
+  }
+  where 
+    printNullTable 0 = putStr ""
+    printNullTable i = do { printNullRow $ fst $ fieldSize field; putStr "\n"; printNullTable (i - 1);}
+
+    printNullRow 0 = putStr ""
+    printNullRow i = do { putStr ". "; printNullRow (i - 1); }
+
+
+printField2 :: [[Int]] -> [[Int]] -> Int -> Int -> IO ()
+printField2 fOld fNew x y
+  | x <= (fst $ fieldSize fNew) && y <= (snd $ fieldSize fNew) = do {
+      if fOld !! y !! x /= fNew !! y !! x then
+        if fNew !! y !! x == 1 then live else dead
+      else
+        return ();
+      printField2 fOld fNew (x + 1) y;
+    }
+  | x > (fst $ fieldSize fNew) = printField2 fOld fNew 0 (y + 1)
+  | y > (snd $ fieldSize fNew) = putStr ""
+
+  where
+    dead = do {
+      setCursorPosition (y) (x * 2); --The * 2 is to make up for the " " when a char is printed.
+      setSGR [SetColor Foreground Vivid Red];
+      putStr ". ";
+      setSGR [Reset];
+    }
+    live = do {
+      setCursorPosition (y) (x * 2);
+      setSGR [SetColor Foreground Vivid Green];
+      putStr "O ";
+      setSGR [Reset];
+    }
+    
+
+
+
+
 printField :: [[Int]] -> IO ()
 printField [] = putStr ""
 printField (x:xs) = do {
@@ -106,26 +151,34 @@ printField (x:xs) = do {
 
 runGame :: Int -> [[Int]] -> IO ()
 runGame 0 field = do {
-        clearFromCursorToScreenBeginning ;
+        --clearFromCursorToScreenBeginning ;
         setCursorPosition 0 0;
         printField field;
         putStr "\n";
       }
 runGame x field = do {
-        clearFromCursorToScreenBeginning ;
+        -- ;
         setCursorPosition 0 0;
-        printField newField; 
+        printField2 field newField 0 0; 
         putStr "\n";
         threadDelay 250000;
         runGame (x - 1) newField ;
       }
       where newField = computeField field
 
+runTest :: Int -> [[Int]] -> IO ()
+runTest i f = do {
+  clearScreen ;
+  setCursorPosition 0 0;
+  printField f;
+  setCursorPosition 0 0;
+  runGame i f;
+}
 
 runRandomGame :: Int -> IO () 
 runRandomGame steps = do {
     x <- randomRIO (0, 1);
-    runGame steps $ randomField 20 20 x;
+    runTest steps $ randomField 20 20 x;
   }
 
 --NEEED TESTS FOR GOOD GRADE!!!!!
