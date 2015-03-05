@@ -122,9 +122,6 @@ printField2 fOld fNew x y
     }
     
 
-
-
-
 printField :: [[Int]] -> IO ()
 printField [] = putStr ""
 printField (x:xs) = do {
@@ -171,6 +168,7 @@ runTest i f = do {
   clearScreen ;
   setCursorPosition 0 0;
   printField f;
+  threadDelay 250000;
   setCursorPosition 0 0;
   runGame i f;
 }

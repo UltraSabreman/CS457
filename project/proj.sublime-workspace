@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"run",
+				"runGame"
+			],
+			[
+				"prin",
+				"printField"
+			],
+			[
+				"do",
+				"doRow"
+			],
+			[
+				"filed",
+				"fieldSize"
+			],
+			[
+				"print",
+				"printNullRow"
+			],
+			[
+				"field",
+				"fieldSize"
+			],
+			[
 				"rand",
 				"randomField"
 			],
@@ -12,16 +36,8 @@
 				"randomR"
 			],
 			[
-				"field",
-				"field"
-			],
-			[
 				"com",
 				"computeField"
-			],
-			[
-				"do",
-				"doTiming"
 			],
 			[
 				"c",
@@ -151,7 +167,7 @@
 			"file": "main.hs",
 			"settings":
 			{
-				"buffer_size": 3369,
+				"buffer_size": 4749,
 				"line_ending": "Windows"
 			}
 		}
@@ -336,6 +352,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			";\n",
 			"y",
 			"self.",
 			"Quick.",
@@ -415,15 +432,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3369,
+						"buffer_size": 4749,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1275,
-								1275
+								4709,
+								4709
 							]
 						],
 						"settings":
@@ -433,7 +450,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2330.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
