@@ -4,8 +4,28 @@
 		"selected_items":
 		[
 			[
+				"printF",
+				"printField2"
+			],
+			[
+				"to",
+				"toggleCell"
+			],
+			[
+				"set",
+				"setCursorPosition"
+			],
+			[
+				"inst",
+				"instructions"
+			],
+			[
+				"print",
+				"printNullField"
+			],
+			[
 				"run",
-				"runGame"
+				"runWithUser"
 			],
 			[
 				"prin",
@@ -18,10 +38,6 @@
 			[
 				"filed",
 				"fieldSize"
-			],
-			[
-				"print",
-				"printNullRow"
 			],
 			[
 				"field",
@@ -159,7 +175,7 @@
 			"file": "gol.cabal",
 			"settings":
 			{
-				"buffer_size": 235,
+				"buffer_size": 244,
 				"line_ending": "Windows"
 			}
 		},
@@ -167,7 +183,7 @@
 			"file": "main.hs",
 			"settings":
 			{
-				"buffer_size": 4749,
+				"buffer_size": 6707,
 				"line_ending": "Windows"
 			}
 		}
@@ -352,6 +368,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Int",
 			";\n",
 			"y",
 			"self.",
@@ -404,15 +421,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 235,
+						"buffer_size": 244,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								234,
-								234
+								243,
+								243
 							]
 						],
 						"settings":
@@ -432,15 +449,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4749,
+						"buffer_size": 6707,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4709,
-								4709
+								189,
+								189
 							]
 						],
 						"settings":
@@ -450,7 +467,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2330.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

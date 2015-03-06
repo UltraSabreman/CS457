@@ -5,4 +5,4 @@ Cabal-Version:       >=1.2
 
 Executable GameOfLife
    Main-is:           main.hs
-   Build-Depends:     base >= 3 && < 5, parsec, ansi-terminal, random
+   Build-Depends:     base >= 3 && < 5, parsec, ansi-terminal, random, NCurses
