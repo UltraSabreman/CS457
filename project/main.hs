@@ -6,9 +6,9 @@ module Project where
 import Control.Concurrent
 import System.Console.ANSI
 import System.Random
-import UI.NCurses
---import Data.Char
---import System.Console.Terminfo.Keys
+import System.IO
+import System.Console.Haskeline
+import Control.Monad.IO.Class
 
 trueFieldSize :: [[Int]] -> (Int, Int)
 trueFieldSize field = (length field, length $ field !! 0)
@@ -126,7 +126,7 @@ printField2 fOld fNew x y
     }
     
 printField :: [[Int]] -> IO ()
-printField [] = putStr "\nArrow keys: Move   Space: Toggle Cell    Enter: Done\n";
+printField [] = putStr ""
 printField (x:xs) = do {
     (px x);
     putStr "\n";
@@ -151,96 +151,108 @@ printField (x:xs) = do {
 
 runGame :: Int -> [[Int]] -> IO ()
 runGame 0 field = do {
-        --clearFromCursorToScreenBeginning ;
         setCursorPosition 0 0;
         printField field;
         putStr "\n";
       }
-runGame x field = do {
-        -- ;
+runGame x field = 
+  if theSame then do {
+      cls;
+      printField field;
+      putStr "\n Stable field state achived! \n";
+    }
+  else do {
         setCursorPosition 0 0;
         printField2 field newField 0 0; 
         putStr "\n";
         threadDelay 250000;
         runGame (x - 1) newField ;
       }
-      where newField = computeField field
-
-runTest :: Int -> [[Int]] -> IO ()
-runTest i f = do {
-  clearScreen ;
-  setCursorPosition 0 0;
-  printField f;
-  threadDelay 250000;
-  setCursorPosition 0 0;
-  runGame i f;
-}
+      where 
+        newField = computeField field
+        theSame = field == newField
 
 runRandomGame :: Int -> IO () 
 runRandomGame steps = do {
     x <- randomRIO (0, 1);
-    runTest steps $ randomField 20 20 x;
+    cls;
+    printField $ randomField 20 20 x;
+    threadDelay 250000;
+    setCursorPosition 0 0;
+    runGame steps $ randomField 20 20 x;
   }
 
 runWithUser :: IO () 
 runWithUser = do {
-  putStr "Enter the width of the field: ";
-  w <- getLine;
-  putStr "\nAnd the heigth: ";
-  h <- getLine;
-  printField $ field w h;
-  showCursor;
-  setCursorPosition 0 0;
-}
-  where field w h = nullField (read w :: Int) (read h :: Int)
+    cls;
+    putStr "Enter the width of the field: ";
+    w <- getLine;
+    putStr "\nAnd the heigth: ";
+    h <- getLine;
+    putStr "\nAnd the number of iteration you want to run: ";
+    i <- getLine;
+    cls;
+    printField $ field w h;
+    putStr "\nWASD: Move   Space: Toggle Cell    q: Run\n";
+    setCursorPosition 0 0;
+    showCursor;
+    runInputT defaultSettings $ loop 0 0 (read i :: Int) $ field w h;
+  }
+  where 
+    field :: String -> String -> [[Int]]
+    field w h = nullField (read w :: Int) (read h :: Int)
 
-doStuff :: Int -> Int -> [[Int]] -> IO()
-doStuff x y field = do {
-  c <- getChar;
-  putChar c;
-  if c == ' ' then 
-    printField2 field (toggleCell x y field) 0 0
-  else return ();
+    loop :: Int -> Int -> Int -> [[Int]] -> InputT IO ()
+    loop x y i f = do {
 
-}
+        liftIO $ setCursorPosition 0 0;
+        liftIO $ printField f;
+        outputStrLn "\nWASD: Move   Space: Toggle Cell    q: Run\n";
+        liftIO $ setCursorPosition x y;
 
-moveCur :: Char -> Int -> Int -> [[Int]] -> IO()
-{-processKey ' ' x y field
-  | field !! y !! x == 1 = do { field !! y !! x = 0; putStr "O "; }
-  | otherwise = do { field !! y !! x = 1; putStr ". ";} -}
-moveCur 'w' x y field = setCursorPosition (y + 1) x;
-moveCur 's' x y field = setCursorPosition (y - 1) x;
-moveCur 'a' x y field = setCursorPosition y (x - 1);
-moveCur 'd' x y field = setCursorPosition y (x + 1);
---processKey 'q' x y field = putStr "";
+        minput <- getInputChar "";
+        case minput of
+          Nothing -> return ()
+          Just 'q' -> do {
+            liftIO $ cls;
+            liftIO $ printField f;
+            liftIO $ threadDelay 250000;
+            liftIO $ runGame i f;
+          }
+
+          Just 'w' -> moveCur 'w' x y i f
+          Just 'a' -> moveCur 'a' x y i f
+          Just 's' -> moveCur 's' x y i f
+          Just 'd' -> moveCur 'd' x y i f
+
+          Just ' ' -> loop x y i $ toggleCell y x f
+
+          Just input -> loop x y i f
+      }
+    moveCur :: Char -> Int -> Int -> Int -> [[Int]] -> InputT IO()
+    moveCur c x y i f = do {
+      if      c == 'a' && y > 0 then                          loop x (y - 2) i f;
+      else if c == 'w' && x > 1 then                          loop (x - 1) y i f;
+      else if c == 'd' && y < ((snd $ fieldSize f) * 2) then loop x (y + 2) i f;
+      else if c == 's' && x < (fst $ fieldSize f) then       loop (x + 1) y i f;
+      else                                                    loop x y i f;
+    }
+
+cls :: IO()
+cls = do {
+    clearScreen;
+    setCursorPosition 0 0;
+  }
 
 
 toggleCell :: Int -> Int -> [[Int]] -> [[Int]]
 toggleCell x 0 (r:rw) = (doRow x r) : rw
   where 
+    doRow _ [] = []
     doRow 0 (i:is) = if i == 1 then 0:is else 1:is 
-    doRow x (i:is) = i : (doRow (x - 1) is)
+    doRow x (i:is) = i : (doRow (x - 2) is)
 toggleCell x y (r:rw) = r : (toggleCell x (y - 1) rw)
 
-main :: IO ()
-main = runCurses $ do
-    setEcho False
-    w <- defaultWindow
-    updateWindow w $ do
-        moveCursor 1 10
-        drawString "Hello world!"
-        moveCursor 3 10
-        drawString "(press q to quit)"
-        moveCursor 0 0
-    render
-    waitFor w (\ev -> ev == EventCharacter 'q' || ev == EventCharacter 'Q')
 
-waitFor :: Window -> (Event -> Bool) -> Curses ()
-waitFor w p = loop where
-    loop = do
-        ev <- getEvent w Nothing
-        case ev of
-            Nothing -> loop
-            Just ev' -> if p ev' then return () else loop
 
 --NEEED TESTS FOR GOOD GRADE!!!!!
