@@ -40,20 +40,6 @@ nullField :: Int -> Int -> [[Int]]
 nullField sx sy = [[ 0 | x <- [0..(sx - 1)]] | y <- [0..(sy - 1)]]
 
 
-
-{-properPosNoLoop :: (Int, Int) -> (Int, Int)
-properPosNoLoop (x, y) = (nx, ny)
-  where 
-    nx 
-      | x < 0 = 0
-      | x >= fst fieldSize = fst fieldSize - 1
-      | otherwise x
-    ny
-      | y < 0 = 0
-      | y >= snd fieldSize = snd fieldSize - 1
-      | otherwise y
--}
-
 properPos :: [[Int]] -> (Int, Int) -> (Int, Int)
 properPos f (x,y) = (nx x, ny y)
   where 
@@ -172,6 +158,8 @@ runGame x field =
         newField = computeField field
         theSame = field == newField
 
+
+
 runRandomGame :: Int -> IO () 
 runRandomGame steps = do {
     x <- randomRIO (0, 1);
@@ -189,53 +177,82 @@ runWithUser = do {
     w <- getLine;
     putStr "\nAnd the heigth: ";
     h <- getLine;
-    putStr "\nAnd the number of iteration you want to run: ";
-    i <- getLine;
     cls;
     printField $ field w h;
     putStr "\nWASD: Move   Space: Toggle Cell    q: Run\n";
     setCursorPosition 0 0;
     showCursor;
-    runInputT defaultSettings $ loop 0 0 (read i :: Int) $ field w h;
+    runInputT defaultSettings $ loop 0 0 $ field w h;
   }
   where 
     field :: String -> String -> [[Int]]
     field w h = nullField (read w :: Int) (read h :: Int)
 
-    loop :: Int -> Int -> Int -> [[Int]] -> InputT IO ()
-    loop x y i f = do {
+    loop :: Int -> Int -> [[Int]] -> InputT IO ()
+    loop x y f = do {
 
         liftIO $ setCursorPosition 0 0;
         liftIO $ printField f;
-        outputStrLn "\nWASD: Move   Space: Toggle Cell    q: Run\n";
+        outputStrLn "\nWASD: Move, Space: Toggle Cell, r: Run x Iterations, e: Step, q: quit\n";
         liftIO $ setCursorPosition x y;
 
         minput <- getInputChar "";
+        clearPress x y f;
         case minput of
           Nothing -> return ()
-          Just 'q' -> do {
+          Just 'q' -> liftIO $ cls;
+
+          Just 'r' -> do {
+            liftIO $ setCursorPosition ((snd $ fieldSize f) + 2) 0;
+            liftIO $ putStr "\nEnter the number of iterations to run: ";
+            i <- (liftIO $ getLine);
             liftIO $ cls;
             liftIO $ printField f;
             liftIO $ threadDelay 250000;
-            liftIO $ runGame i f;
+            liftIO $ runGame (read i :: Int) f;
           }
 
-          Just 'w' -> moveCur 'w' x y i f
-          Just 'a' -> moveCur 'a' x y i f
-          Just 's' -> moveCur 's' x y i f
-          Just 'd' -> moveCur 'd' x y i f
+          Just 'w' -> moveCur 'w' x y f
+          Just 'a' -> moveCur 'a' x y f
+          Just 's' -> moveCur 's' x y f
+          Just 'd' -> moveCur 'd' x y f
 
-          Just ' ' -> loop x y i $ toggleCell y x f
+          Just ' ' -> loop x y $ toggleCell y x f
 
-          Just input -> loop x y i f
+          Just 'e' -> do { 
+              liftIO $ setCursorPosition 0 0;
+              liftIO $ printField2 f (computeField f) 0 0; 
+              liftIO $ putStr "\n";
+              liftIO $ threadDelay 250000;
+              loop x y $ computeField f; 
+            }
+
+          Just input -> loop x y f
       }
-    moveCur :: Char -> Int -> Int -> Int -> [[Int]] -> InputT IO()
-    moveCur c x y i f = do {
-      if      c == 'a' && y > 0 then                          loop x (y - 2) i f;
-      else if c == 'w' && x > 1 then                          loop (x - 1) y i f;
-      else if c == 'd' && y < ((snd $ fieldSize f) * 2) then loop x (y + 2) i f;
-      else if c == 's' && x < (fst $ fieldSize f) then       loop (x + 1) y i f;
-      else                                                    loop x y i f;
+    clearPress :: Int -> Int -> [[Int]] -> InputT IO() 
+    clearPress x y f = 
+      if f !! (quot y 2)!! x == 1 then 
+        do {
+          liftIO $ setSGR [SetColor Foreground Vivid Green];
+          liftIO $ setCursorPosition x y;
+          outputStr "O";
+          liftIO $ setSGR [Reset];
+        }
+      else
+        do {
+          liftIO $ setSGR [SetColor Foreground Vivid Red];
+          liftIO $ setCursorPosition x y;
+          outputStr ".";
+          liftIO $ setSGR [Reset];
+        }
+
+    moveCur :: Char -> Int -> Int -> [[Int]] -> InputT IO()
+    moveCur c x y f = do {
+      if      c == 'a' && y > 0 then                         loop x (y - 2) f;
+      else if c == 'w' && x > 1 then                         loop (x - 1) y f;
+      else if c == 'd' && y < ((snd $ fieldSize f) * 2) then loop x (y + 2) f;
+      else if c == 's' && x < (fst $ fieldSize f) then       loop (x + 1) y f;
+      else                                                   loop x y f;
     }
 
 cls :: IO()
