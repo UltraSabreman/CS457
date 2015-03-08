@@ -21,24 +21,17 @@ data Cell = Alive | Dead deriving (Show, Eq)
 --This gets the actual size of the field
 --Used for calculations
 trueFieldSize :: [[Cell]] -> (Int, Int)
+trueFieldSize [] = (0, 0)
+trueFieldSize [[]] = (0, 0)
 trueFieldSize field = (length field, length $ field !! 0)
 
 --This gets the size of the field -1 on both dimentions
 --Used for iteration and limits
 fieldSize :: [[Cell]] -> (Int, Int)
+fieldSize [] = (0, 0)
+fieldSize [[]] = (0, 0)
 fieldSize field = (fst size - 1, snd size - 1)
     where size = trueFieldSize field
-
---This makes a hardcoded test field.
---Usefull for testing individual functions
-testField :: [[Cell]]
-testField = map (map numToCell) $ [
-        [0,1,0],
-        [0,1,0],
-        [0,1,0],
-      ]
-  where 
-    numToCell x = if x == 1 then Alive else Dead
 
 --Converts a cell to a bool
 isAlive :: Cell -> Bool
@@ -81,7 +74,7 @@ toggleCell (x, 0) (r:rw) = (doRow x r) : rw
     doRow :: Int -> [Cell] -> [Cell]
     doRow _ [] = []
     doRow 0 (i:is) = if i == Alive then Dead:is else Alive:is 
-    doRow x (i:is) = i : (doRow (x - 2) is)
+    doRow x (i:is) = i : (doRow (x - 1) is)
 toggleCell (x, y) (r:rw) = r : (toggleCell (x, y - 1) rw)
 
 
@@ -106,8 +99,8 @@ nullField (sx, sy) = [[ Dead | x <- [0..(sx - 1)]] | y <- [0..(sy - 1)]]
 wrappedPos :: [[Cell]] -> (Int, Int) -> (Int, Int)
 wrappedPos f (x, y) = (x `modulo` width, y`modulo` height)
   where
-    width = fst $ fieldSize f
-    height = snd $ fieldSize f
+    width = fst $ trueFieldSize f
+    height = snd $ trueFieldSize f
 
     modulo :: Int -> Int -> Int
     modulo n m | r < 0     = r + m
@@ -273,7 +266,7 @@ runWithUserInput = do {
 
           --Toggle cell between dead/alive
           --X and y must be swapped because of how the field actually stores cells vs the display
-          Just ' ' -> loop pos $ toggleCell (x * 2, y) f 
+          Just ' ' -> loop pos $ toggleCell (x, y) f 
 
           Just input -> loop pos f --All other input does nothing
       }
@@ -291,7 +284,7 @@ runWithUserInput = do {
     moveCur :: Char -> (Int, Int) -> [[Cell]] -> InputT IO()
     moveCur c (x, y) f = do {
       if      c == 'w' && y > 0 then                         loop (x, y - 1) f;
-      else if c == 'a' && x > 1 then                         loop (x - 1, y) f;
+      else if c == 'a' && x > 0 then                         loop (x - 1, y) f;
       else if c == 's' && y < (snd $ fieldSize f) then       loop (x, y + 1) f;
       else if c == 'd' && x < (fst $ fieldSize f) then       loop (x + 1, y) f;
       else                                                   loop (x, y) f;
@@ -301,9 +294,115 @@ runWithUserInput = do {
 {-----------}
 {- Testing -}
 {-----------}
+--This makes a hardcoded test field.
+--Usefull for testing individual functions
+testField :: [[Cell]]
+testField = map (map numToCell) $ [
+        [0,1,0],
+        [0,1,0],
+        [0,1,0]
+      ]
+  where 
+    numToCell x = if x == 1 then Alive else Dead
+
+testField2 :: [[Cell]]
+testField2 = map (map numToCell) $ [
+        [0,0,0,0,0],
+        [0,0,1,0,0],
+        [0,0,1,0,0],
+        [0,0,1,0,0],
+        [0,0,0,0,0]
+      ]
+  where 
+    numToCell x = if x == 1 then Alive else Dead
+
+testField3 :: [[Cell]]
+testField3 = map (map numToCell) $ [
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,1,1,1,0],
+        [0,0,0,0,0],
+        [0,0,0,0,0]
+      ]
+  where 
+    numToCell x = if x == 1 then Alive else Dead
+
+--trueFieldSize :: [[Cell]] -> (Int, Int)
+test_trueFieldSize1 = TestCase (assertEqual "trueFieldSize testField" (trueFieldSize testField) (3,3))
+test_trueFieldSize2 = TestCase (assertEqual "trueFieldSize [[]]" (trueFieldSize []) (0,0))
+test_trueFieldSize3 = TestCase (assertEqual "trueFieldSize [[Alive, Dead],[Alive, Dead]]" (trueFieldSize [[Alive, Dead],[Alive, Dead]]) (2,2))
+testList_trueFieldSize = TestList [test_trueFieldSize1, test_trueFieldSize2, test_trueFieldSize3]
+
+--fieldSize :: [[Cell]] -> (Int, Int)
+test_fieldSize1 = TestCase (assertEqual "fieldSize testField" (fieldSize testField) (2,2))
+test_fieldSize2 = TestCase (assertEqual "fieldSize [[]]" (fieldSize []) (0,0))
+test_fieldSize3 = TestCase (assertEqual "fieldSize [[Alive, Dead],[Alive, Dead]]" (fieldSize [[Alive, Dead],[Alive, Dead]]) (1,1))
+testList_fieldSize = TestList [test_fieldSize1, test_fieldSize2, test_fieldSize3]
+
+--getCell :: (Int, Int) -> [[Cell]] -> Cell
+test_getCell1 = TestCase (assertEqual "getCell (0,0) [[Dead, Alive], [Alive, Dead]]" (getCell (0,0) [[Dead, Alive], [Alive, Dead]]) Dead)
+test_getCell2 = TestCase (assertEqual "getCell (1,0) [[Dead, Alive], [Alive, Dead]]" (getCell (1,0) [[Dead, Alive], [Alive, Dead]]) Alive)
+test_getCell3 = TestCase (assertEqual "getCell (0,0) testField" (getCell (0,0) testField) Dead)
+test_getCell4 = TestCase (assertEqual "getCell (1,3) testField" (getCell (1,1) testField) Alive)
+testList_getCell = TestList [test_getCell1, test_getCell2, test_getCell3, test_getCell4]
+
+--isAlive :: Cell -> Bool
+test_isAlive1 = TestCase (assertEqual "isAlive Alive" (isAlive Alive) True)
+test_isAlive2 = TestCase (assertEqual "isAlive Dead" (isAlive Dead) False)
+test_isAlive3 = TestCase (assertEqual "isAlive $ getCell (1,3) testField" (isAlive $ getCell (1,1) testField) True)
+testList_isAlive = TestList [test_isAlive1, test_isAlive2, test_isAlive3]
+
+--toggleCell :: (Int, Int) -> [[Cell]] -> [[Cell]]
+test_toggleCell1 = TestCase (assertEqual "toggleCell (0,0) [[Dead, Dead], [Dead, Dead]]" (toggleCell (0,0) [[Dead, Dead], [Dead, Dead]]) [[Alive, Dead], [Dead, Dead]])
+test_toggleCell2 = TestCase (assertEqual "toggleCell (0,0) [[Alive, Alive], [Alive, Alive]]" (toggleCell (0,0) [[Alive, Alive], [Alive, Alive]]) [[Dead, Alive], [Alive, Alive]])
+test_toggleCell3 = TestCase (assertEqual "toggleCell (1,1) testField" (toggleCell (1,1) testField) ([[Dead, Alive, Dead], [Dead, Dead, Dead], [Dead, Alive, Dead]]))
+test_toggleCell4 = TestCase (assertEqual "toggleCell (0,0) testField" (toggleCell (0,0) testField) [[Alive, Alive, Dead], [Dead, Alive, Dead], [Dead, Alive, Dead]])
+testList_toggleCell = TestList [test_toggleCell1, test_toggleCell2, test_toggleCell3, test_toggleCell4]
 
 
---at4 = TestCase (assertEqual "add [I,O,I] [I,O,I]" (add [I,O,I] [I,O,I]) [O,I,O,I])
---at5 = TestCase (assertEqual "add [I,I,I,I] [I]" (add [I,I,I,I] [I]) [O,O,O,O,I])
+--wrappedPos :: [[Cell]] -> (Int, Int) -> (Int, Int)
+test_wrappedPos1 = TestCase (assertEqual "wrappedPos testField (0,0)" (wrappedPos testField (0,0)) (0,0))
+test_wrappedPos2 = TestCase (assertEqual "wrappedPos testField (0,0)" (wrappedPos testField (0,0)) (0,0))
+test_wrappedPos3 = TestCase (assertEqual "wrappedPos testField (-1,-1)" (wrappedPos testField (-1,-1)) (2,2))
+test_wrappedPos4 = TestCase (assertEqual "wrappedPos testField (2,2)" (wrappedPos testField (3,3)) (0,0))
+testList_wrappedPos = TestList [test_wrappedPos1, test_wrappedPos2, test_wrappedPos3, test_wrappedPos4]
 
---runAddTests = runTestTT $ TestList[at1, at2, at3, at4, at5]
+
+--buildAdjList :: [[Cell]] -> (Int, Int) -> [(Int, Int)] 
+test_buildAdjList1 = TestCase (assertEqual "buildAdjList testField2 (2,2)" (buildAdjList testField2 (2,2)) [(1,1),(2,1),(3,1),(1,2),(3,2),(1,3),(2,3),(3,3)])
+test_buildAdjList2 = TestCase (assertEqual "buildAdjList testField2 (0,0)" (buildAdjList testField2 (0,0)) [(4,4),(0,4),(1,4),(4,0),(1,0),(4,1),(0,1),(1,1)])
+testList_buildAdjList = TestList [test_buildAdjList1, test_buildAdjList2]
+
+--countLive :: (Int, Int) -> [[Cell]] -> Int
+test_countLive1 = TestCase (assertEqual "countLive (0,0) testField2" (countLive (0,0) testField2) 0)
+test_countLive2 = TestCase (assertEqual "countLive (2,1) testField2" (countLive (2,1) testField2) 1)
+test_countLive3 = TestCase (assertEqual "countLive (2,2) testField2" (countLive (2,2) testField2) 2)
+testList_countLive = TestList [test_countLive1, test_countLive2, test_countLive3]
+
+--computeCell :: (Int, Int) -> [[Cell]] -> Cell
+test_computeCell1 = TestCase (assertEqual "computeCell (0,0) testField2" (computeCell (0,0) testField2) Dead)
+test_computeCell2 = TestCase (assertEqual "computeCell (2,1) testField2" (computeCell (2,1) testField2) Dead)
+test_computeCell3 = TestCase (assertEqual "computeCell (2,2) testField2" (computeCell (2,2) testField2) Alive)
+test_computeCell4 = TestCase (assertEqual "computeCell (1,2) testField2" (computeCell (1,2) testField2) Alive)
+testList_computeCell = TestList [test_computeCell1, test_computeCell2, test_computeCell3, test_computeCell4]
+
+
+--computeField :: [[Cell]] -> [[Cell]]
+test_computeField1 = TestCase (assertEqual "computeField [[Alive, Alive], [Dead, Dead]]" (computeField [[Alive, Alive], [Dead, Dead]]) [[Alive, Alive], [Dead, Dead]])
+test_computeField2 = TestCase (assertEqual "computeField testField" (computeField testField) [[Alive, Alive, Alive], [Alive, Alive, Alive], [Alive, Alive, Alive]])
+test_computeField3 = TestCase (assertEqual "computeField testField2" (computeField testField2) testField3)
+testList_computeField = TestList [test_computeField1, test_computeField2, test_computeField3]
+
+
+test_runAllTests = do {
+  runTestTT testList_trueFieldSize;
+  runTestTT testList_fieldSize;
+  runTestTT testList_getCell;
+  runTestTT testList_isAlive;
+  runTestTT testList_toggleCell;
+  runTestTT testList_wrappedPos;
+  runTestTT testList_buildAdjList;
+  runTestTT testList_countLive;
+  runTestTT testList_computeCell;
+  runTestTT testList_computeField;
+}
