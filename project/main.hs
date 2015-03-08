@@ -301,3 +301,9 @@ runWithUserInput = do {
 {-----------}
 {- Testing -}
 {-----------}
+
+
+--at4 = TestCase (assertEqual "add [I,O,I] [I,O,I]" (add [I,O,I] [I,O,I]) [O,I,O,I])
+--at5 = TestCase (assertEqual "add [I,I,I,I] [I]" (add [I,I,I,I] [I]) [O,O,O,O,I])
+
+--runAddTests = runTestTT $ TestList[at1, at2, at3, at4, at5]
