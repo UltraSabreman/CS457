@@ -69,13 +69,13 @@ cls = do {
 
 --This flips the given cell from dead to alive.
 toggleCell :: (Int, Int) -> [[Cell]] -> [[Cell]]
-toggleCell (x, 0) (r:rw) = (doRow x r) : rw
-  where 
+toggleCell (x, 0) (r:rw) = (doRow x r) : rw --Iterates rows
+  where --Iteratec cells in rows
     doRow :: Int -> [Cell] -> [Cell]
     doRow _ [] = []
     doRow 0 (i:is) = if i == Alive then Dead:is else Alive:is 
     doRow x (i:is) = i : (doRow (x - 1) is)
-toggleCell (x, y) (r:rw) = r : (toggleCell (x, y - 1) rw)
+toggleCell (x, y) (r:rw) = r : (toggleCell (x, y - 1) rw) --Toggles the cell
 
 
 {-------------------------}
@@ -86,7 +86,7 @@ toggleCell (x, y) (r:rw) = r : (toggleCell (x, y - 1) rw)
 randomField :: (Int, Int) -> Int -> [[Cell]]
 randomField (mx, my) seed = [[ num (x, y) | x <- [0..(mx - 1)]] | y <- [0..(my - 1)]]
   where 
-    num :: (Int, Int) -> Cell
+    num :: (Int, Int) -> Cell --Places the cell by using the random seed
     num (x, y) = if (randomRs (0, 1::Int) $ mkStdGen seed) !! ((y * x) + x) == 1 
       then Alive
       else Dead
@@ -130,11 +130,12 @@ computeField field = [[computeCell (j, k) field | j <- [0..(fst $ fieldSize fiel
 --This only prints the changed cells between the two provided fields
 printFieldStep :: [[Cell]] -> [[Cell]] -> (Int, Int) -> IO ()
 printFieldStep fOld fNew pos@(x,y)
+  -- while we're in a valid coordinate, if the cell changed from the last field, print it
   | x <= (fst $ fieldSize fNew) && y <= (snd $ fieldSize fNew) = do {
       if getCell pos fOld /= getCell pos fNew then draw else return ();
       printFieldStep fOld fNew (x + 1, y);
     }
-  | x > (fst $ fieldSize fNew) = printFieldStep fOld fNew (0, y + 1)
+  | x > (fst $ fieldSize fNew) = printFieldStep fOld fNew (0, y + 1) --Move through field
   | y > (snd $ fieldSize fNew) = putStr ""
 
   where
@@ -173,7 +174,7 @@ runGame 0 field = do {
         printField field;
       }
 runGame x field = 
-  if theSame then do {
+  if theSame then do { --Checks when the old and new fields are equal, so we dont keep running
       cls;
       printField field;
       putStr "\n Stable field state achived! \n";
@@ -228,7 +229,6 @@ runWithUserInput = do {
         liftIO $ setCursorPosition 0 0;
         liftIO $ printField f;
         outputStrLn "\nWASD: Move, Space: Toggle Cell, r: Run x Iterations, e: Step, q: quit\n";
-        --liftIO $ putStr $ show (x,y);
         liftIO $ setCursorPosition y (x * 2);
 
         minput <- getInputChar "";
